@@ -55,8 +55,9 @@ def stock_picker(arr)
 end
 
 class Towers
-    attr_reader :towers
+    attr_reader :towers, :num
     def initialize(num)
+        @num = num
         @towers = Array.new(3) {[]}
         @towers[0] = (1..num).to_a.reverse
     end
@@ -68,7 +69,13 @@ class Towers
     def move(pos1, pos2)
         if !self[pos2 - 1].empty?
             raise 'Error.' if self[pos2 - 1].last < self[pos1 - 1].last
-        end    
+        end
         self[pos2 - 1] << self[pos1 - 1].pop
+    end
+
+    def won?
+
+        return true if towers[-1] == (1..num).to_a.reverse
+        false
     end
 end

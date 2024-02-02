@@ -57,7 +57,7 @@ describe Towers do
             end
 
             it 'should generate the tower array' do
-                expect(tower[0]).to eq([4, 3, 2, 1]) 
+                expect(tower[0]).to eq([4, 3, 2, 1])
             end
 
             it 'should have 2 empty arrays' do
@@ -76,7 +76,7 @@ describe Towers do
     end
 
     describe '#move' do
-        before(:each) do 
+        before(:each) do
             tower.move(1, 2)
         end
         context 'ask player to move disc' do
@@ -91,10 +91,21 @@ describe Towers do
         end
     end
 
-    describe '#won?' do 
-        context 'end tower should have the discs in the correct order' do
-            it '' do
+    describe '#won?' do
+        let(:small_tower) {Towers.new(2)}
+        before(:each) do
+            small_tower.move(1,2)
+            small_tower.move(1,3)
+            small_tower.move(2,3)
+        end
 
+        context 'end tower should have the discs in the correct order' do
+            it 'should return true when the game is over' do
+                expect(small_tower.won?).to be true
+            end
+
+            it 'should return false when the game is not over' do
+                expect(tower.won?).to be false
             end
         end
     end
