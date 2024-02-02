@@ -47,3 +47,55 @@ describe '#stock_picker' do
 
     end
 end
+
+describe Towers do
+    subject(:tower) {Towers.new(4)}
+    describe '#initialize' do
+        context 'initialize with number argument' do
+            it 'should not raise an error when given a number' do
+                expect{tower}.to_not raise_error
+            end
+
+            it 'should generate the tower array' do
+                expect(tower[0]).to eq([4, 3, 2, 1]) 
+            end
+
+            it 'should have 2 empty arrays' do
+                expect(tower[2]).to eq([])
+                expect(tower[1]).to eq([])
+            end
+        end
+    end
+
+    describe '#[](pos)' do
+        context 'should return array of tower at given index' do
+            it 'should return array of tower at given index' do
+                expect(tower[0]).to eq([4, 3, 2, 1])
+            end
+        end
+    end
+
+    describe '#move' do
+        before(:each) do 
+            tower.move(1, 2)
+        end
+        context 'ask player to move disc' do
+            it 'should move the top disc to the second tower' do
+                expect(tower[0]).to eq([4, 3, 2])
+                expect(tower[1]).to eq([1])
+            end
+
+            it 'should raise error and not move disc if the disc in destination is smaller than the moving disc' do
+                expect{tower.move(1, 2)}.to raise_error
+            end
+        end
+    end
+
+    describe '#won?' do 
+        context 'end tower should have the discs in the correct order' do
+            it '' do
+
+            end
+        end
+    end
+end
