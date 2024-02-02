@@ -9,3 +9,11 @@ describe '#my_uniq' do
         end
     end
 end
+
+describe 'Array#two_sum' do
+    context 'finds all pairs of positions where the elements at those positions sum to zero' do
+        it 'should return the index pair of the elements' do
+            expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+        end
+    end
+end
